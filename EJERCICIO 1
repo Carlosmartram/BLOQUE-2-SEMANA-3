@@ -1,0 +1,31 @@
+interface Dibujable {
+    void dibujar();
+}
+
+class Circulo implements Dibujable {
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un círculo: ○");
+    }
+}
+
+class Rectangulo implements Dibujable {
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un rectángulo: ▭");
+    }
+}
+
+public class Main {
+    public static void dibujarFigura(Dibujable figura) {
+        figura.dibujar();
+    }
+
+    public static void main(String[] args) {
+        Circulo c = new Circulo();
+        Rectangulo r = new Rectangulo();
+
+        dibujarFigura(c);
+        dibujarFigura(r);
+    }
+}

@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+import java.util.List;
+
+interface Dibujable {
+    void dibujar();
+}
+
+abstract class Figura {
+    String nombre;
+
+    public Figura(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+}
+
+abstract class Figura2D extends Figura {
+    public Figura2D(String nombre) {
+        super(nombre);
+    }
+}
+
+abstract class Figura3D extends Figura {
+    public Figura3D(String nombre) {
+        super(nombre);
+    }
+}
+
+class Pentagono extends Figura2D implements Dibujable {
+    public Pentagono() {
+        super("Pentágono");
+    }
+
+    public void dibujar() {
+        System.out.println("  *  ");
+        System.out.println(" * * ");
+        System.out.println("*   *");
+        System.out.println("*****");
+    }
+}
+
+class Cubo extends Figura3D implements Dibujable {
+    public Cubo() {
+        super("Cubo");
+    }
+
+    public void dibujar() {
+        System.out.println(" +-----+");
+        System.out.println(" |     |");
+        System.out.println(" |     |");
+        System.out.println(" +-----+");
+    }
+}
+
+class Esfera extends Figura3D implements Dibujable {
+    public Esfera() {
+        super("Esfera");
+    }
+
+    public void dibujar() {
+        System.out.println("  ***  ");
+        System.out.println(" *   * ");
+        System.out.println("  ***  ");
+    }
+}
+
+public class SistemaDibujo {
+    public static void main(String[] args) {
+        List<Dibujable> figuras = new ArrayList<>();
+        figuras.add(new Pentagono());
+        figuras.add(new Cubo());
+        figuras.add(new Esfera());
+
+        for (Dibujable figura : figuras) {
+            figura.dibujar();
+            System.out.println();
+        }
+    }
+}

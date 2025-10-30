@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.List;
+
+interface Dibujable {
+    void dibujar();
+}
+
+class Figura {
+    String color;
+    String nombre;
+
+    public Figura(String color, String nombre) {
+        this.color = color;
+        this.nombre = nombre;
+    }
+}
+
+class Triangulo extends Figura implements Dibujable {
+    public Triangulo(String color) {
+        super(color, "Triángulo");
+    }
+
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un " + nombre + " de color " + color + ": △");
+    }
+}
+
+class Cuadrado extends Figura implements Dibujable {
+    public Cuadrado(String color) {
+        super(color, "Cuadrado");
+    }
+
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un " + nombre + " de color " + color + ": ▢");
+    }
+}
+
+class Elipse extends Figura implements Dibujable {
+    public Elipse(String color) {
+        super(color, "Elipse");
+    }
+
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando una " + nombre + " de color " + color + ": ◯");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Dibujable> figuras = new ArrayList<>();
+
+        figuras.add(new Triangulo("rojo"));
+        figuras.add(new Cuadrado("azul"));
+        figuras.add(new Elipse("verde"));
+
+        for (Dibujable f : figuras) {
+            f.dibujar();
+        }
+    }
+}
